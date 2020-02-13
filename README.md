@@ -1,6 +1,7 @@
 Pre-reqs:
 1. Install ansible via pip, ... 
-<TODO more prereqs>
+
+TODO : more prereqs
 
 Set up a headless Raspberry PI:
 1. Format SD card to ExFAT (w/ name "boot")
@@ -16,7 +17,7 @@ Set up a headless Raspberry PI:
 7. Add your SSH pub key to `.ssh/authorized_keys` on the pi
     - This makes the ansible setup easier, but probably could be worked around
 
-# TODO : add basic tools to raspberry pi: tmux, htop
+TODO : add baic tools to raspberry pi: tmux, htop
 
 Install IPFS:
 1. git clone https://github.com/maybejustmaybe/ansible-ipfs-cluster
