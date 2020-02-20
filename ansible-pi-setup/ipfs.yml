@@ -1,0 +1,8 @@
+- hosts: ipfs
+  remote_user: pi
+  roles:
+    - ipfs
+- hosts: ipfs-cluster
+  remote_user: pi
+  roles:
+    - ipfs-cluster

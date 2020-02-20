@@ -1,0 +1,4 @@
+dist_url: https://dist.ipfs.io
+ipfs_cluster_secret: 5f31ee20ca49e0adfc5f405719965f506c95f7bf06ab60f93b116b745261f59f 
+ipfs_cluster_arch: arm
+ipfs_cluster_version: v0.10.0

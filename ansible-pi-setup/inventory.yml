@@ -1,0 +1,5 @@
+[ipfs]
+raspberrypi.local
+
+[ipfs-cluster:children]
+ipfs

@@ -1,31 +1,26 @@
-Pre-reqs:
-1. Install ansible via pip, ... 
-
-TODO : more prereqs
-
 Set up a headless Raspberry PI:
-1. Format SD card to ExFAT (w/ name "boot")
-2. Flash SD card w/ Rasbian [2019-09-26-raspbian-buster-lite] (using balenaEtcher on mac)
-3. Unplug and plug SD card back in
-4. Set up wireless configuration
-    - Edit `wpa_supplicant.conf` w/ your network info
+1. Flash SD card w/ Rasbian 
+    - RPI version: 2019-09-26-raspbian-buster-lite)
+    - Using [balenaEtcher](https://www.balena.io/etcher/)
+2. Unplug and plug SD card back in
+3. Set up wireless configuration (optional)
+    - Edit `./wpa_supplicant.conf` w/ your network info
     - `cp wpa_supplicant.conf $BOOT_DIR` (`/Volumes/boot` on mac)
     - `touch $BOOT_DIR/ssh`
-5. Eject SD card, put it into the PI, and turn it on
-6. To verify connection: SSH to the PI w/ `pi@raspberrypi.local`
+4. Eject SD card, put it into the PI, and turn it on
+5. To verify connection: SSH to the PI w/ `pi@raspberrypi.local`
     - NOTE that the default password is `raspberry`
-7. Add your SSH pub key to `.ssh/authorized_keys` on the pi
+6. Add your SSH pub key to `~/.ssh/authorized_keys` on the pi
     - This makes the ansible setup easier, but probably could be worked around
 
-TODO : add baic tools to raspberry pi: tmux, htop
+# TODO : add basic tools to raspberry pi: tmux, htop
 
 Install IPFS:
-1. git clone https://github.com/maybejustmaybe/ansible-ipfs-cluster
-2. ansible-playbook -i inventory.yml ipfs.yml
+1. Install ansible: `pip isntall ansible`
+# TODO : make this process easier
+2. Add new host to ansible setup (see `./ansible-pi-setup/host_vars/README.md`)
+3. `ansible-playbook -i inventory.yml ipfs.yml`
+4. `ansible-playbook -i inventory.yml ipfs-cluster.yml`
 
-TODO:
-1. Private swarm
-2. Create a custom nycmesh user
-
-Default ipfs password: defaultipfspassword
+# TODO : Create a custom nycmesh user
 

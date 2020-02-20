@@ -1,0 +1,4 @@
+- hosts: ipfs
+  remote_user: pi
+  roles:
+    - ipfs-cluster
