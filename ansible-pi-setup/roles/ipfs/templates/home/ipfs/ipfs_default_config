@@ -6,33 +6,7 @@
     "API": "{{ ipfs_api_listen | default('/ip4/127.0.0.1/tcp/5001') }}",
     "Announce": {{ ipfs_announce | default([]) | to_nice_json(indent=2) | indent(4) }},
     "Gateway": "/ip4/127.0.0.1/tcp/8080",
-    "NoAnnounce": [
-{% if ipfs_no_announce is defined %}
-  {% for p in ipfs_no_announce %}
-      "{{ p }}"{% if not loop.last %},{% endif %}
-  {% endfor %}
-{% else %}
-      "/ip4/100.64.0.0/ipcidr/10",
-      "/ip4/169.254.0.0/ipcidr/16",
-      "/ip4/172.16.0.0/ipcidr/12",
-      "/ip4/192.0.0.0/ipcidr/24",
-      "/ip4/192.0.0.0/ipcidr/29",
-      "/ip4/192.0.0.8/ipcidr/32",
-      "/ip4/192.0.0.170/ipcidr/32",
-      "/ip4/192.0.0.171/ipcidr/32",
-      "/ip4/192.0.2.0/ipcidr/24",
-      "/ip4/192.168.0.0/ipcidr/16",
-      "/ip4/198.18.0.0/ipcidr/15",
-      "/ip4/198.51.100.0/ipcidr/24",
-      "/ip4/203.0.113.0/ipcidr/24",
-      "/ip4/240.0.0.0/ipcidr/4",
-      "/ip6/100::/ipcidr/64",
-      "/ip6/2001:2::/ipcidr/48",
-      "/ip6/2001:db8::/ipcidr/32",
-      "/ip6/fc00::/ipcidr/7",
-      "/ip6/fe80::/ipcidr/10"
-{% endif %}
-    ],
+    "NoAnnounce": [],
     "Swarm": [
       "/ip4/0.0.0.0/tcp/4001",
       "/ip4/0.0.0.0/tcp/4002/ws",
@@ -92,7 +66,7 @@
   },
   "Discovery": {
     "MDNS": {
-      "Enabled": {{ ipfs_discovery | default(False) | lower }},
+      "Enabled": true,
       "Interval": 10
     }
   },
@@ -101,7 +75,7 @@
     "Libp2pStreamMounting": false,
     "P2pHttpProxy": false,
     "PreferTLS": false,
-    "QUIC": true,
+    "QUIC": false,
     "ShardingEnabled": false,
     "StrategicProviding": false,
     "UrlstoreEnabled": false
@@ -153,34 +127,7 @@
     "Type": "dht"
   },
   "Swarm": {
-    "AddrFilters": [
-{% if ipfs_addr_filters is defined %}
-  {% for p in ipfs_addr_filters  %}
-      "{{ p }}"{% if not loop.last %},{% endif %}
-  {% endfor %}
-{% else %}
-      "/ip4/10.0.0.0/ipcidr/8",
-      "/ip4/100.64.0.0/ipcidr/10",
-      "/ip4/169.254.0.0/ipcidr/16",
-      "/ip4/172.16.0.0/ipcidr/12",
-      "/ip4/192.0.0.0/ipcidr/24",
-      "/ip4/192.0.0.0/ipcidr/29",
-      "/ip4/192.0.0.8/ipcidr/32",
-      "/ip4/192.0.0.170/ipcidr/32",
-      "/ip4/192.0.0.171/ipcidr/32",
-      "/ip4/192.0.2.0/ipcidr/24",
-      "/ip4/192.168.0.0/ipcidr/16",
-      "/ip4/198.18.0.0/ipcidr/15",
-      "/ip4/198.51.100.0/ipcidr/24",
-      "/ip4/203.0.113.0/ipcidr/24",
-      "/ip4/240.0.0.0/ipcidr/4",
-      "/ip6/100::/ipcidr/64",
-      "/ip6/2001:2::/ipcidr/48",
-      "/ip6/2001:db8::/ipcidr/32",
-      "/ip6/fc00::/ipcidr/7",
-      "/ip6/fe80::/ipcidr/10"
-{% endif %}
-    ],
+    "AddrFilters": [],
     "ConnMgr": {
       "GracePeriod": "20s",
       "HighWater": {{ ipfs_connmgr_high_water | default(2000) }},
@@ -188,7 +135,7 @@
       "Type": "basic"
     },
     "DisableBandwidthMetrics": {{ ipfs_disable_bandwidth_metrics | default(false) | lower }},
-    "DisableNatPortMap": true,
+    "DisableNatPortMap": false,
     "DisableRelay": false,
     "EnableAutoNATService": false,
     "EnableAutoRelay": false,

@@ -113,7 +113,7 @@
   become_user: ipfs
   template:
     src: home/ipfs/nycmesh_swarm.key
-    dest: "{{ ipfs_home }}/swarm.key"
+    dest: "{{ ipfs_home }}/.ipfs/swarm.key"
     owner: ipfs
     group: ipfs
     mode: 0644

@@ -7,20 +7,21 @@ Set up a headless Raspberry PI:
     - Edit `./wpa_supplicant.conf` w/ your network info
     - `cp wpa_supplicant.conf $BOOT_DIR` (`/Volumes/boot` on mac)
     - `touch $BOOT_DIR/ssh`
+    - NOTE that this process needs to be done everytime the pi is rebooted
 4. Eject SD card, put it into the PI, and turn it on
 5. To verify connection: SSH to the PI w/ `pi@raspberrypi.local`
     - NOTE that the default password is `raspberry`
 6. Add your SSH pub key to `~/.ssh/authorized_keys` on the pi
     - This makes the ansible setup easier, but probably could be worked around
 
-# TODO : add basic tools to raspberry pi: tmux, htop
+# TODO : add basic tools to raspberry pi: tmux, htop, lsof
 
 Install IPFS:
+# TODO : use an isolated environment
 1. Install ansible: `pip isntall ansible`
-# TODO : make this process easier
 2. Add new host to ansible setup (see `./ansible-pi-setup/host_vars/README.md`)
-3. `ansible-playbook -i inventory.yml ipfs.yml`
-4. `ansible-playbook -i inventory.yml ipfs-cluster.yml`
+3. IPFS: `ansible-playbook -i inventory.yml ipfs.yml`
+4. and IPFS Cluster: `ansible-playbook -i inventory.yml ipfs-cluster.yml`
 
 # TODO : Create a custom nycmesh user
 
