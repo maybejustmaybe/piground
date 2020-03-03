@@ -137,8 +137,8 @@
     "DisableBandwidthMetrics": {{ ipfs_disable_bandwidth_metrics | default(false) | lower }},
     "DisableNatPortMap": false,
     "DisableRelay": false,
-    "EnableAutoNATService": false,
-    "EnableAutoRelay": false,
-    "EnableRelayHop": false
+    "EnableAutoNATService": true,
+    "EnableAutoRelay": true,
+    "EnableRelayHop": true
   }
 }
